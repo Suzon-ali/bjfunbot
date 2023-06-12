@@ -42,10 +42,10 @@ console.log('Bot is starting...');
 
 bot.once('ready', () => {
     console.log('Bot is ready');
-    sendCode(codes[0]);
+    sendCode(codes);
 });
 
-let index = 1; 
+let index = 0; 
 const interval = setInterval(() => {
     if (index >= codes.length) {
         clearInterval(interval);
@@ -57,7 +57,7 @@ const interval = setInterval(() => {
     
     sendCode(codes[index]);
     index++;
-}, 10000 );
+}, 1200000 );
 
 
 
