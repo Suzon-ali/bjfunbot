@@ -57,7 +57,7 @@ const interval = setInterval(() => {
     
     sendCode(codes[index]);
     index++;
-}, 1200000 );
+}, 10000 );
 
 
 
