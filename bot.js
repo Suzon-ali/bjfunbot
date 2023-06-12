@@ -27,7 +27,7 @@ function sendCode(code) {
         }]]
     };
     
-    const message = `<b>100 TRX Giveaway Code:</b>\n\n${code}\n\n<b>Next code is coming in 30 minutes</b>`;
+    const message = `<b>100 TRX Giveaway Code:</b>\n\n${code}\n\n<b>Next code is coming in 10 minutes</b>`;
 
     const options = {
         parse_mode: 'HTML',
@@ -42,10 +42,10 @@ console.log('Bot is starting...');
 
 bot.once('ready', () => {
     console.log('Bot is ready');
-    sendCode(codes);
+    sendCode(codes[0]);
 });
 
-let index = 0; 
+let index = 1; 
 const interval = setInterval(() => {
     if (index >= codes.length) {
         clearInterval(interval);
@@ -57,7 +57,7 @@ const interval = setInterval(() => {
     
     sendCode(codes[index]);
     index++;
-}, 1200000 );
+}, 600000 );
 
 
 
