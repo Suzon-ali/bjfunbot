@@ -38,6 +38,7 @@ const interval = setInterval(() => {
     if (index >= codes.length) {
         clearInterval(interval);
         bot.sendMessage('-1001729594756', 'I am hungry! I need to eat some codes. I will back to you!');
+        console.log('Bot is Stopping');
         return;
     }
     
