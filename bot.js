@@ -13,14 +13,15 @@ function sendCode(code) {
         }]]
     };
     
-    const message = `<b>100 TRX Giveaway Code:</b>\n\n${code}`;
-    const waitMessage = 'Next code is coming in 30 minutes'
+    const message = `<b>100 TRX Giveaway Code:</b>\n\n${code}\n\n<b>Next code is coming in 30 minutes</b>`;
+
+
     const options = {
         parse_mode: 'HTML',
         reply_markup: JSON.stringify(inlineKeyboard)
     };
 
-    bot.sendMessage(channel, message, waitMessage, options);
+    bot.sendMessage(channel, message, options);
 }
 
 
