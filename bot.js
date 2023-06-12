@@ -1,5 +1,5 @@
 const TelegramBot = require('node-telegram-bot-api');
-const token = '6153171374:AAGjzjNWdfsEzMELVUDGDENzmnEXgHTB-uA';
+const token = '6274800232:AAHzezsCCIygSbMTsdH1KX5fcvhQIm4vR4I';
 const codes = [
     'o39551', 'j66571', 'f71871', 'm39291', 'p33881', 'w89811', 'k06241', 'o05321', 'q86941', 'v19711',
     'q75171', 'b23031', 'v71781', 'b45481', 'h50731', 'w27751', 'l56161', 'j07321', 't67631', 'j69441',
@@ -16,7 +16,7 @@ const codes = [
 
 const bot = new TelegramBot(token, { polling: true });
 
-const channel = '-1001729594756';
+const channel = '-982567887';
 
 function sendCode(code) {
     
