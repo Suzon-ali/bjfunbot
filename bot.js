@@ -1,6 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api');
 const token = '6153171374:AAGjzjNWdfsEzMELVUDGDENzmnEXgHTB-uA';
-const codes = ['code1', 'code2', 'code3', 'code4'];
+const codes = ['code1', 'code2', 'code3', 'code4', 'code5'];
 
 const bot = new TelegramBot(token, { polling: true });
 
@@ -14,13 +14,13 @@ function sendCode(code) {
     };
     
     const message = `<b>100 TRX Giveaway Code:</b>\n\n${code}`;
-
+    const waitMessage = 'Next code is coming in 30 minutes'
     const options = {
         parse_mode: 'HTML',
         reply_markup: JSON.stringify(inlineKeyboard)
     };
 
-    bot.sendMessage(channel, message, options);
+    bot.sendMessage(channel, message, waitMessage, options);
 }
 
 
