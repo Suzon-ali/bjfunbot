@@ -45,7 +45,7 @@ bot.once('ready', () => {
     sendCode(codes[0]);
 });
 
-let index = 1; 
+let index = 0; 
 const interval = setInterval(() => {
     if (index >= codes.length) {
         clearInterval(interval);
