@@ -1,4 +1,5 @@
 const TelegramBot = require('node-telegram-bot-api');
+const Redis = require('redis');
 const token = '6153171374:AAGjzjNWdfsEzMELVUDGDENzmnEXgHTB-uA';
 const codes = ['code1', 'code2', 'code3', 'code4', 'code5'];
 
