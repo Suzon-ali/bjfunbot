@@ -93,10 +93,11 @@ function schedulePhotoMessage(photoPath, caption, button, cronExpression) {
   });
 }
 
-  schedulePhotoMessage(photo2500Usdt, caption2500Usdt, button, "0 6,9,12,15,18,24 * * *");
-  schedulePhotoMessage(photo100Usdt, caption100usdt, button, "0 7,10,13,1,19,1 * * *");
-  schedulePhotoMessage(photo1000Trx, caption1000usdt, button, "0 8,11,14,20,2 * * *");
-  schedulePhotoMessage(photo2000TrxDiscord, caption2000TrxDiscord, button, "0 3,5,45 9, * * *");
+schedulePhotoMessage(photo2500Usdt, caption2500Usdt, button, "0 6,9,12,15,18,0 * * *");
+schedulePhotoMessage(photo100Usdt, caption100usdt, button, "0 7,10,13,19,21,1 * * *");
+schedulePhotoMessage(photo1000Trx, caption1000usdt, button, "0 8,11,14,20,2 * * *");
+schedulePhotoMessage(photo2000TrxDiscord, caption2000TrxDiscord, button, "0 3,5,9 * * *");
+
 
 
 // const codes = [
@@ -145,6 +146,9 @@ function schedulePhotoMessage(photoPath, caption, button, cronExpression) {
 //     index++;
 // }, 50000);
 
+bot.on('polling', () => {
+    console.log('Bot is ready');
+  });
 
 
 bot.on("polling_error", (error) => {
