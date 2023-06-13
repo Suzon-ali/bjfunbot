@@ -5,10 +5,8 @@ const bot = new TelegramBot(token, { polling: true });
 const channel = "-1001509151141";
 
 bot.on("polling", () => {
-    console.log("Bot started");
+    console.log("Bot is started");
   });
-
-console.log("Bot started");
 
 function messageButton(buttons) {
   const inlineKeyboard = {
@@ -63,7 +61,7 @@ cron.schedule("0 9,12,19 16,18,22 * * *", () => {
     console.log('2500 USDT Photo sent successfully');
   });
   
-  cron.schedule("0 10,13,35 16,19,23 * * *", () => {
+  cron.schedule("0 10,13,17,19,23 * * *", () => {
     const options = messageButton(button);
     sendPhotoWithText(channel, photo100Usdt, caption100usdt, options);
     console.log('100 USDT Photo sent successfully');
