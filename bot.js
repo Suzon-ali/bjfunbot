@@ -2,20 +2,23 @@ const TelegramBot = require("node-telegram-bot-api");
 const cron = require("node-cron");
 const token = "6153171374:AAGjzjNWdfsEzMELVUDGDENzmnEXgHTB-uA";
 const bot = new TelegramBot(token, { polling: true });
-const channel = "-1001509151141";
+const channel = "-1001729594756";
 
-bot.on("polling", () => {
-    console.log("Bot is started");
-  });
+
+// bot.on('polling', () => {
+//     console.log('Bot is ready');
+//     sendCode(codes[0]);
+//   });
+
 
 function messageButton(buttons) {
   const inlineKeyboard = {
-    inline_keyboard: buttons,
+    inline_keyboard: buttons
   };
 
   const options = {
     parse_mode: "HTML",
-    reply_markup: JSON.stringify(inlineKeyboard),
+    reply_markup: JSON.stringify(inlineKeyboard)
   };
 
   return options;
@@ -26,7 +29,7 @@ const rules =
 
 bot.onText(/\/rules/, (msg) => {
   const buttons = [
-    [{ text: "Join Blackjack.fun", url: "https://blackjack.fun/" }],
+    [{ text: "Join Blackjack.fun", url: "https://blackjack.fun/" }]
   ];
   const options = messageButton(buttons);
   bot.sendMessage(msg.chat.id, rules, options);
@@ -36,7 +39,7 @@ function sendPhotoWithText(chatId, photoPath, caption, button) {
   bot.sendPhoto(chatId, photoPath, {
     caption: caption,
     parse_mode: "HTML",
-    ...button,
+    ...button
   });
 }
 
@@ -53,49 +56,47 @@ const caption2000TrxDiscord = `<b>We are excited to announce that we are giving 
 
 const button = [[{ text: "Join Now 🚀🚀🚀", url: "https://giveaway.com/en/zNx667lVlgU" }]];
 
-// ...
 
-cron.schedule("0 9,12,19 16,18,22 * * *", () => {
-    const options = messageButton(button);
-    sendPhotoWithText(channel, photo2500Usdt, caption2500Usdt, options);
-    console.log('2500 USDT Photo sent successfully');
+let previousMessageId = null; // Variable to store the previous message ID
+
+function deletePhotoMessage(chatId, messageId) {
+  bot.deleteMessage(chatId, messageId)
+    .then(() => {
+      console.log(`Previous message deleted with ID: ${messageId}`);
+    })
+    .catch((error) => {
+      console.error("Failed to delete previous message:", error);
+    });
+}
+
+function schedulePhotoMessage(photoPath, caption, button, cronExpression) {
+  cron.schedule(cronExpression, () => {
+    const options = {
+      parse_mode: "HTML",
+      reply_markup: JSON.stringify({ inline_keyboard: button }),
+    };
+
+    // Delete previous message if available
+    if (previousMessageId !== null) {
+      deletePhotoMessage(channel, previousMessageId);
+    }
+
+    // Send new photo message
+    bot.sendPhoto(channel, photoPath, { caption, ...options })
+      .then((message) => {
+        previousMessageId = message.message_id; // Store the new message ID
+        console.log(`Photo sent successfully with ID: ${previousMessageId}`);
+      })
+      .catch((error) => {
+        console.error("Failed to send photo:", error);
+      });
   });
-  
-  cron.schedule("0 10,13,17,19,23 * * *", () => {
-    const options = messageButton(button);
-    sendPhotoWithText(channel, photo100Usdt, caption100usdt, options);
-    console.log('100 USDT Photo sent successfully');
-  });
-  
-  cron.schedule("0 11,14,17,20,21 * * *", () => {
-    const options = messageButton(button);
-    sendPhotoWithText(channel, photo1000Trx, caption1000usdt, options);
-    console.log('1000 TRX Photo sent successfully');
-  });
-  
-  cron.schedule("24 11,14,17,20,22 * * *", () => {
-    const options = messageButton(button);
-    sendPhotoWithText(channel, photo2000TrxDiscord, caption2000TrxDiscord, options);
-    console.log('2000 TRX Discord Photo sent successfully');
-  });
-  
-  // ...
-  
+}
 
-
-
-
-
-
-
-
-
-
-
-
-//Don't touch below
-
-
+  schedulePhotoMessage(photo2500Usdt, caption2500Usdt, button, "0 6,9,12,15,18,24 * * *");
+  schedulePhotoMessage(photo100Usdt, caption100usdt, button, "0 7,10,13,1,19,1 * * *");
+  schedulePhotoMessage(photo1000Trx, caption1000usdt, button, "0 8,11,14,20,2 * * *");
+  schedulePhotoMessage(photo2000TrxDiscord, caption2000TrxDiscord, button, "0 3,5,45 9, * * *");
 
 
 // const codes = [
@@ -117,11 +118,11 @@ cron.schedule("0 9,12,19 16,18,22 * * *", () => {
 
 //     buttons = [
 //         [
-//            { text:'   Join 100 TRX giveaway   ', url:'https://giveaway.com/en/profile/cMuREW06yTurDfUq'},
-//            { text:'   Ongoing giveaways   ', url:'https://giveaway.com/en/profile/cMuREW06yTurDfUq'}
+//            { text:'Join 100 TRX giveaway', url:'https://giveaway.com/en/profile/cMuREW06yTurDfUq'},
+//            { text:'Ongoing giveaways', url:'https://giveaway.com/en/profile/cMuREW06yTurDfUq'}
 //         ],
 //         [
-//            { text:'   Join Blackjack.fun   ', url:'https://blackjack.fun/'}
+//            { text:'Join Blackjack.fun', url:'https://blackjack.fun/'}
 //         ],
 
 //     ]
@@ -130,10 +131,6 @@ cron.schedule("0 9,12,19 16,18,22 * * *", () => {
 //     bot.sendMessage(channel, message, options);
 // }
 
-// bot.on('polling', () => {
-//     console.log('Bot is ready');
-//     sendCode(codes[0]);
-//   });
 
 // let index = 0;
 // const interval = setInterval(() => {
@@ -146,7 +143,7 @@ cron.schedule("0 9,12,19 16,18,22 * * *", () => {
 
 //     sendCode(codes[index]);
 //     index++;
-// }, 100000);
+// }, 50000);
 
 
 
