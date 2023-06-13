@@ -2,7 +2,7 @@ const TelegramBot = require("node-telegram-bot-api");
 const cron = require("node-cron");
 const token = "6153171374:AAGjzjNWdfsEzMELVUDGDENzmnEXgHTB-uA";
 const bot = new TelegramBot(token, { polling: true });
-const channel = "-1001729594756";
+const channel = "-1001509151141";
 
 
 // bot.on('polling', () => {
