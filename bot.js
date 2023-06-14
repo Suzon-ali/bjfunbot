@@ -54,7 +54,11 @@ const caption100usdt = `<b>Win 100 USDT by making at least 5usd worth of crypto 
 const caption1000usdt = `<b>We are excited to announce that we are giving away 1000 TRX tokens to 1 lucky winner.</b>\n\n<b>🏆Prizes distribution:</b>\n\n1000 TRX to 1 lucky winner`;
 const caption2000TrxDiscord = `<b>We are excited to announce that we are giving away 2000 TRX Discord Giveaway.</b>\n\n<b>🏆Prizes distribution:</b>\n\n2000 TRX to 2000 people`;
 
-const button = [[{ text: "Join Now 🚀🚀🚀", url: "https://giveaway.com/en/zNx667lVlgU" }]];
+const button2500Usdt = [[{ text: "Join Now 🚀🚀🚀", url: "https://giveaway.com/en/zNx667lVlgU" }]];
+const button100Usdt = [[{ text: "Join Now 🚀🚀🚀", url: "https://giveaway.com/en/tMS8mu8kcu0" }]];
+const button1000Trx = [[{ text: "Join Now 🚀🚀🚀", url: "https://giveaway.com/en/gwXRwAtn7eG" }]];
+const button2000TrxDiscord = [[{ text: "Join Now 🚀🚀🚀", url: "https://giveaway.com/en/CHaPgvtLbxq" }]];
+
 
 
 let previousMessageId = null; // Variable to store the previous message ID
@@ -93,10 +97,10 @@ function schedulePhotoMessage(photoPath, caption, button, cronExpression) {
   });
 }
 
-schedulePhotoMessage(photo2500Usdt, caption2500Usdt, button, "0 6,9,12,15,18,0 * * *");
-schedulePhotoMessage(photo100Usdt, caption100usdt, button, "0 7,10,13,19,21,1 * * *");
-schedulePhotoMessage(photo1000Trx, caption1000usdt, button, "0 8,11,14,20,2 * * *");
-schedulePhotoMessage(photo2000TrxDiscord, caption2000TrxDiscord, button, "0 3,5,9 * * *");
+schedulePhotoMessage(photo2500Usdt, caption2500Usdt, button2500Usdt, "0 6,9,12,15,18,0 * * *");
+schedulePhotoMessage(photo100Usdt, caption100usdt, button100Usdt, "0 7,10,13,19,21,1 * * *");
+schedulePhotoMessage(photo1000Trx, caption1000usdt, button1000Trx, "0 8,11,14,20,2 * * *");
+schedulePhotoMessage(photo2000TrxDiscord, caption2000TrxDiscord, button2000TrxDiscord, "0 3,5,9 * * *");
 
 
 
