@@ -4,6 +4,7 @@ const token = "6153171374:AAGjzjNWdfsEzMELVUDGDENzmnEXgHTB-uA";
 const bot = new TelegramBot(token, { polling: true });
 const channel = "-1001509151141";
 
+console.log("Bot is ready");
 
 // bot.on('polling', () => {
 //     console.log('Bot is ready');
@@ -90,17 +91,26 @@ function schedulePhotoMessage(photoPath, caption, button, cronExpression) {
       .then((message) => {
         previousMessageId = message.message_id; // Store the new message ID
         console.log(`Photo sent successfully with ID: ${previousMessageId}`);
+
+        bot.pinChatMessage(channel, message.message_id)
+        .then(()=>{
+          console.log('Messase Pinned Succesfully');
+        })
+        .catch((error)=>{
+          console.log('Error Pinning Message');
+        });
       })
+      
       .catch((error) => {
         console.error("Failed to send photo:", error);
       });
   });
 }
 
-schedulePhotoMessage(photo2500Usdt, caption2500Usdt, button2500Usdt, "0 6,9,12,15,18,0 * * *");
-schedulePhotoMessage(photo100Usdt, caption100usdt, button100Usdt, "0 7,10,13,19,21,1 * * *");
-schedulePhotoMessage(photo1000Trx, caption1000usdt, button1000Trx, "0 8,11,14,20,2 * * *");
-schedulePhotoMessage(photo2000TrxDiscord, caption2000TrxDiscord, button2000TrxDiscord, "0 3,5,9 * * *");
+schedulePhotoMessage(photo2500Usdt, caption2500Usdt, button2500Usdt, "0 1,5,9,13,17,21 * * *");
+schedulePhotoMessage(photo100Usdt, caption100usdt, button100Usdt, "0 2,6,10,14,18,22 * * *");
+schedulePhotoMessage(photo1000Trx, caption1000usdt, button1000Trx, "0 3,7,11,15,19,23 * * *");
+schedulePhotoMessage(photo2000TrxDiscord, caption2000TrxDiscord, button2000TrxDiscord, "0 4,8,12,16,20,0 * * *");
 
 
 
@@ -150,9 +160,9 @@ schedulePhotoMessage(photo2000TrxDiscord, caption2000TrxDiscord, button2000TrxDi
 //     index++;
 // }, 50000);
 
-bot.on('polling', () => {
-    console.log('Bot is ready');
-  });
+// bot.on('polling', () => {
+//     console.log('Bot is ready');
+//   });
 
 
 bot.on("polling_error", (error) => {
