@@ -62,17 +62,17 @@ const button2000TrxDiscord = [[{ text: "Join Now 🚀🚀🚀", url: "https://gi
 
 
 
-let previousMessageId = null; // Variable to store the previous message ID
+// let previousMessageId = null; // Variable to store the previous message ID
 
-function deletePhotoMessage(chatId, messageId) {
-  bot.deleteMessage(chatId, messageId)
-    .then(() => {
-      console.log(`Previous message deleted with ID: ${messageId}`);
-    })
-    .catch((error) => {
-      console.error("Failed to delete previous message:", error);
-    });
-}
+// function deletePhotoMessage(chatId, messageId) {
+//   bot.deleteMessage(chatId, messageId)
+//     .then(() => {
+//       console.log(`Previous message deleted with ID: ${messageId}`);
+//     })
+//     .catch((error) => {
+//       console.error("Failed to delete previous message:", error);
+//     });
+// }
 
 function schedulePhotoMessage(photoPath, caption, button, cronExpression) {
   cron.schedule(cronExpression, () => {
@@ -82,9 +82,9 @@ function schedulePhotoMessage(photoPath, caption, button, cronExpression) {
     };
 
     // Delete previous message if available
-    if (previousMessageId !== null) {
-      deletePhotoMessage(channel, previousMessageId);
-    }
+    // if (previousMessageId !== null) {
+    //   deletePhotoMessage(channel, previousMessageId);
+    // }
 
     // Send new photo message
     bot.sendPhoto(channel, photoPath, { caption, ...options })
