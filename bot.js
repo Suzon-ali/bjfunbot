@@ -10,10 +10,6 @@ const bot = new TelegramBot(token, { polling: true });
 
 console.log("Bot is ready");
 
-
-const webhookUrl = "https://your-render-app-name.onrender.com/your-webhook-endpoint";
-bot.setWebHook(webhookUrl);
-
 let userMessageCount = 0;
 let previousMessageId = null;
 
